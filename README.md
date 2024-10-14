@@ -11,6 +11,10 @@ Material-UI, Context API, Axios, and Apache ECharts. This README will guide you 
 the installation process and provide an overview of the project structure and functionality.
 ```
 
+## Dployed App 🚀
+
+https://stamm2911.github.io/smart-visualizer/
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -26,7 +30,7 @@ the installation process and provide an overview of the project structure and fu
 
 ### Prerequisites
 
-- Node.js >= 14.x
+- Node.js >= 18.x
 - Yarn >= 1.22.x
 - mui/material: 5.16.7
 - axios: ^1.7.7
