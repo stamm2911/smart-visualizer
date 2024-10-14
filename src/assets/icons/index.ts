@@ -1,0 +1,1 @@
+export { PharusSecondaryLogo } from "./PharusSecondaryLogo";
