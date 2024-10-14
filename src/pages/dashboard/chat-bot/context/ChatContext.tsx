@@ -19,6 +19,7 @@ interface ChatContextType {
   inputText: string;
   setInputText: (text: string) => void;
   handleSendMessage: () => void;
+  loading: boolean;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -35,6 +36,7 @@ export const useChat = () => {
 export const ChatProvider = ({ children }: { children: ReactNode }) => {
   const [inputText, setInputText] = useState<string>("");
   const [chatlog, setChatlog] = useState<ChatMessage[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSendMessage = async () => {
     if (inputText.trim()) {
@@ -47,6 +49,7 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
       setInputText("");
 
       try {
+        setLoading(true);
         const response = await axios.get(import.meta.env.VITE_CHATBOT_API_URL);
 
         const { data } = response;
@@ -59,6 +62,8 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
         ]);
       } catch (error) {
         console.error("Error fetching the response:", error);
+      } finally {
+        setLoading(false);
       }
     }
   };
@@ -78,7 +83,7 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ChatContext.Provider
-      value={{ chatlog, inputText, setInputText, handleSendMessage }}
+      value={{ chatlog, inputText, setInputText, handleSendMessage, loading }}
     >
       {children}
     </ChatContext.Provider>

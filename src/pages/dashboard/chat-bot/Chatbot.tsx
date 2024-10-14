@@ -15,6 +15,7 @@ import {
   Button,
   InputAdornment,
   TextField,
+  Collapse,
 } from "@mui/material";
 import { DRAWER_WIDTH } from "../chart/constants";
 import { ChatBubble } from "./components";
@@ -34,7 +35,8 @@ export const ChatBot = ({
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { chatlog, inputText, setInputText, handleSendMessage } = useChat();
+  const { chatlog, inputText, setInputText, handleSendMessage, loading } =
+    useChat();
   const theme = useTheme();
 
   const handleDrawerClose = () => {
@@ -107,6 +109,9 @@ export const ChatBot = ({
           />
         ))}
       </Grid>
+      <Collapse in={loading} sx={{ mb: 3 }}>
+        <ChatBubble isUser={false} message="Writing..." timeStamp="Just now" />
+      </Collapse>
       <Grid
         item
         container

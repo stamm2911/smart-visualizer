@@ -9,6 +9,6 @@ export const PharusButtonStyles = {
   backgroundPosition: "center",
   transition: "transform 0.2s ease",
   "&:hover": {
-    transform: "scale(1.1)",
+    transform: "scale(1.1) rotate(15deg)",
   },
 };
