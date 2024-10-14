@@ -24,5 +24,6 @@ export const palette: PaletteOptions = {
     400: "#EDEEF0",
     500: "rgba(0, 0, 0, 0.7)",
     600: "#7F7F7F",
+    700: "#808080",
   },
 };

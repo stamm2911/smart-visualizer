@@ -4,6 +4,7 @@ import { Close } from "@mui/icons-material";
 import { Grid, IconButton, Divider, Drawer } from "@mui/material";
 import { PharusButton } from "../../shared-components/PharusButton";
 import { Chart } from "./chart";
+import { ChartDataProvider } from "./chart/context/ChartDataContext";
 
 const drawerWidth = 240;
 
@@ -38,7 +39,9 @@ export function Dashboard() {
         }}
       />
 
-      <Chart open={open} />
+      <ChartDataProvider>
+        <Chart open={open} />
+      </ChartDataProvider>
 
       <Drawer
         sx={{

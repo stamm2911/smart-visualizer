@@ -1,5 +1,14 @@
-import { Grid, Typography, Divider, styled, useTheme } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Divider,
+  styled,
+  useTheme,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import { BarGraph, Header, TotalRevenue } from "./components";
+import { useChartData } from "./context/ChartDataContext";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
@@ -28,6 +37,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
 }));
 
 export const Chart = ({ open }: { open: boolean }) => {
+  const { error } = useChartData();
   const theme = useTheme();
 
   return (
@@ -49,6 +59,12 @@ export const Chart = ({ open }: { open: boolean }) => {
           height: "5px",
         }}
       />
+
+      <Snackbar open={!!error}>
+        <Alert severity="error" sx={{ width: "100%" }}>
+          {error}
+        </Alert>
+      </Snackbar>
     </Main>
   );
 };
