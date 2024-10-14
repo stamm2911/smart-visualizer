@@ -3,6 +3,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import { Close } from "@mui/icons-material";
 import { Grid, IconButton, Divider, Drawer } from "@mui/material";
 import { PharusButton } from "../../shared-components/PharusButton";
+import { Chart } from "./chart";
 
 const drawerWidth = 240;
 
@@ -36,6 +37,8 @@ export function Dashboard() {
           ...(open && { display: "none" }),
         }}
       />
+
+      <Chart open={open} />
 
       <Drawer
         sx={{
