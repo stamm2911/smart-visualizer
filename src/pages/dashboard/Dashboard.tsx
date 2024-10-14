@@ -5,6 +5,7 @@ import { PharusButton } from "../../shared-components/PharusButton";
 import { Chart } from "./chart";
 import { ChartDataProvider } from "./chart/context/ChartDataContext";
 import { ChatBot } from "./chat-bot";
+import { ChatProvider } from "./chat-bot/context/ChatContext";
 
 export function Dashboard() {
   const theme = useTheme();
@@ -20,7 +21,9 @@ export function Dashboard() {
         <Chart open={open} />
       </ChartDataProvider>
 
-      <ChatBot open={open} setOpen={setOpen} />
+      <ChatProvider>
+        <ChatBot open={open} setOpen={setOpen} />
+      </ChatProvider>
 
       <PharusButton
         onClick={handleDrawerOpen}

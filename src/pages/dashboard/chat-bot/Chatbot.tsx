@@ -1,3 +1,4 @@
+import { useChat } from "./context/ChatContext";
 import { Dispatch } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import {
@@ -33,6 +34,7 @@ export const ChatBot = ({
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const { chatlog, inputText, setInputText, handleSendMessage } = useChat();
   const theme = useTheme();
 
   const handleDrawerClose = () => {
@@ -95,12 +97,12 @@ export const ChatBot = ({
           },
         }}
       >
-        {Array.from({ length: 20 }).map((_, index) => (
+        {chatlog.map((chat, index) => (
           <ChatBubble
             key={index}
-            isUser={!(index % 2)}
-            message="Lorem Ipsum"
-            timeStamp="hot"
+            isUser={chat.isUser}
+            message={chat.message}
+            timeStamp={chat.timestamp}
           />
         ))}
       </Grid>
@@ -111,6 +113,8 @@ export const ChatBot = ({
         sx={{ borderTop: `1px solid ${theme.palette.grey[400]}` }}
       >
         <TextField
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
           placeholder="Type your question here..."
           fullWidth
           multiline
@@ -118,7 +122,7 @@ export const ChatBot = ({
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton edge="end">
+                <IconButton edge="end" onClick={handleSendMessage}>
                   <ArrowUpward />
                 </IconButton>
               </InputAdornment>
