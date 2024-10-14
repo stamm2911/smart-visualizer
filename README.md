@@ -11,7 +11,7 @@ Material-UI, Context API, Axios, and Apache ECharts. This README will guide you 
 the installation process and provide an overview of the project structure and functionality.
 ```
 
-## Dployed App 🚀
+## Deployed App 🚀
 
 https://stamm2911.github.io/smart-visualizer/
 
