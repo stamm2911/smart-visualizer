@@ -1,18 +1,10 @@
 import { useState } from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import { Close } from "@mui/icons-material";
-import { Grid, IconButton, Divider, Drawer } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Grid } from "@mui/material";
 import { PharusButton } from "../../shared-components/PharusButton";
 import { Chart } from "./chart";
 import { ChartDataProvider } from "./chart/context/ChartDataContext";
-
-const drawerWidth = 240;
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-}));
+import { ChatBot } from "./chat-bot";
 
 export function Dashboard() {
   const theme = useTheme();
@@ -22,12 +14,14 @@ export function Dashboard() {
     setOpen(true);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
   return (
     <Grid container>
+      <ChartDataProvider>
+        <Chart open={open} />
+      </ChartDataProvider>
+
+      <ChatBot open={open} setOpen={setOpen} />
+
       <PharusButton
         onClick={handleDrawerOpen}
         sx={{
@@ -38,30 +32,6 @@ export function Dashboard() {
           ...(open && { display: "none" }),
         }}
       />
-
-      <ChartDataProvider>
-        <Chart open={open} />
-      </ChartDataProvider>
-
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-          },
-        }}
-        variant="persistent"
-        anchor="right"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            <Close />
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-      </Drawer>
     </Grid>
   );
 }
