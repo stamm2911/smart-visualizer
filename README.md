@@ -5,7 +5,10 @@
 ## Description
 
 ```md
-This project is part of the Pharus front-end take-home assignment. The task involves building a chat interface and a data visualization chart using React.js, Material-UI, Context API, Axios, and Apache ECharts. This README will guide you through the installation process and provide an overview of the project structure and functionality.
+This project is part of the Pharus front-end take-home assignment.
+The task involves building a chat interface and a data visualization chart using React.js,
+Material-UI, Context API, Axios, and Apache ECharts. This README will guide you through
+the installation process and provide an overview of the project structure and functionality.
 ```
 
 ## Table of Contents
