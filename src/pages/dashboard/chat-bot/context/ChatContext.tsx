@@ -6,6 +6,7 @@ import {
   ReactNode,
 } from "react";
 import axios from "axios";
+import { getCurrentTimestamp } from "../../../../utils/calculations";
 
 interface ChatMessage {
   message: string;
@@ -34,11 +35,6 @@ export const useChat = () => {
 export const ChatProvider = ({ children }: { children: ReactNode }) => {
   const [inputText, setInputText] = useState<string>("");
   const [chatlog, setChatlog] = useState<ChatMessage[]>([]);
-
-  const getCurrentTimestamp = () => {
-    const now = new Date();
-    return now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  };
 
   const handleSendMessage = async () => {
     if (inputText.trim()) {

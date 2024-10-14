@@ -1,15 +1,7 @@
 import { SouthEast } from "@mui/icons-material";
 import { Grid, Typography, Paper, Chip, Skeleton } from "@mui/material";
-import { ChartDataFormated, useChartData } from "../context/ChartDataContext";
-
-const getTotalRevenue = (chartConfig: ChartDataFormated | null) => {
-  if (!chartConfig) return;
-
-  return chartConfig.series.reduce((total, series) => {
-    const seriesSum = series.data.reduce((sum, item) => sum + item.value, 0);
-    return total + seriesSum;
-  }, 0);
-};
+import { useChartData } from "../context/ChartDataContext";
+import { getTotalRevenue } from "../../../../utils/calculations";
 
 export const TotalRevenue = () => {
   const { data, loading } = useChartData();
