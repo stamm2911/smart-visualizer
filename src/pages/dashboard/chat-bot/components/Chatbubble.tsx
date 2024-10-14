@@ -12,7 +12,7 @@ export const ChatBubble = ({
   const theme = useTheme();
 
   return (
-    <Grid container my={1} justifyContent={isUser ? "flex-end" : "flex-start"}>
+    <Grid container item my={1} justifyContent={isUser ? "flex-end" : "flex-start"} height='fit-content'>
       <Grid
         container
         alignItems="flex-end"

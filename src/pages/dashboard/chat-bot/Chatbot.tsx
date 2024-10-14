@@ -75,7 +75,8 @@ export const ChatBot = ({
         </Grid>
       </DrawerHeader>
       <Grid
-        container
+        direction="column"
+        justifyContent="flex-end"
         padding="0 16px 16px"
         height="100%"
         sx={{
