@@ -35,8 +35,14 @@ export const ChatBot = ({
   open: boolean;
   setOpen: Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { chatlog, inputText, setInputText, handleSendMessage, loading } =
-    useChat();
+  const {
+    chatlog,
+    inputText,
+    setInputText,
+    handleSendMessage,
+    loading,
+    dummyScroll,
+  } = useChat();
   const theme = useTheme();
 
   const handleDrawerClose = () => {
@@ -77,9 +83,10 @@ export const ChatBot = ({
         </Grid>
       </DrawerHeader>
       <Grid
+        ref={dummyScroll}
         direction="column"
         justifyContent="flex-end"
-        padding="0 16px 16px"
+        padding={`0 16px ${loading ? "80px" : "16px"}`}
         height="100%"
         sx={{
           overflowY: "auto",
@@ -109,8 +116,14 @@ export const ChatBot = ({
           />
         ))}
       </Grid>
-      <Collapse in={loading} sx={{ mb: 3 }}>
-        <ChatBubble isUser={false} message="Writing..." timeStamp="Just now" />
+      <Collapse in={loading}>
+        <Grid item px={2} pb={5}>
+          <ChatBubble
+            isUser={false}
+            message="Writing..."
+            timeStamp="Just now"
+          />
+        </Grid>
       </Collapse>
       <Grid
         item

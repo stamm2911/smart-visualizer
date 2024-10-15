@@ -4,6 +4,8 @@ import {
   useState,
   useEffect,
   ReactNode,
+  useRef,
+  RefObject,
 } from "react";
 import axios from "axios";
 import { getCurrentTimestamp } from "../../../../utils/calculations";
@@ -20,6 +22,7 @@ interface ChatContextType {
   setInputText: (text: string) => void;
   handleSendMessage: () => void;
   loading: boolean;
+  dummyScroll: RefObject<HTMLDivElement>;
 }
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
@@ -37,6 +40,7 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
   const [inputText, setInputText] = useState<string>("");
   const [chatlog, setChatlog] = useState<ChatMessage[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const dummyScroll = useRef<HTMLDivElement>(null);
 
   const handleSendMessage = async () => {
     if (inputText.trim()) {
@@ -69,6 +73,13 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
+    if (dummyScroll.current) {
+      dummyScroll.current.scrollIntoView({ behavior: "smooth" });
+      dummyScroll.current.scrollTop = dummyScroll?.current?.scrollHeight;
+    }
+  }, [chatlog]);
+
+  useEffect(() => {
     const savedChatlog = sessionStorage.getItem("chatlog");
     if (savedChatlog) {
       setChatlog(JSON.parse(savedChatlog));
@@ -83,7 +94,14 @@ export const ChatProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ChatContext.Provider
-      value={{ chatlog, inputText, setInputText, handleSendMessage, loading }}
+      value={{
+        chatlog,
+        inputText,
+        setInputText,
+        handleSendMessage,
+        loading,
+        dummyScroll,
+      }}
     >
       {children}
     </ChatContext.Provider>
