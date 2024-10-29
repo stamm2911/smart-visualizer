@@ -1,12 +1,11 @@
-# Pharus – Front-end Take-home Assignment
+# Smart visualizer
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Description
 
 ```md
-This project is part of the Pharus front-end take-home assignment.
-The task involves building a chat interface and a data visualization chart using React.js,
+This project involves building a chat interface and a data visualization chart using React.js,
 Material-UI, Context API, Axios, and Apache ECharts. This README will guide you through
 the installation process and provide an overview of the project structure and functionality.
 ```
@@ -15,12 +14,15 @@ the installation process and provide an overview of the project structure and fu
 
 https://stamm2911.github.io/smart-visualizer/
 
+<img width="1271" alt="image" src="https://github.com/user-attachments/assets/b3973bdf-cec4-49a3-a4f3-9683d724ec5e">
+
+
 ## Table of Contents
 
 - [Installation](#installation)
 - [Assignment Overview](#assignment-overview)
-- [Task 1: Chat Interface](#task-1-chat-interface)
-- [Task 2: Double Vertical Bar Chart](#task-2-double-vertical-bar-chart)
+- [Task 1: Chat Interface](#part-1-chat-interface)
+- [Task 2: Double Vertical Bar Chart](#part-2-double-vertical-bar-chart)
 - [Additional Tasks](#additional-tasks)
 - [License](#license)
 - [Contribute](#contribute)
@@ -30,8 +32,8 @@ https://stamm2911.github.io/smart-visualizer/
 
 ### Prerequisites
 
-- Node.js >= 18.x
-- Yarn >= 1.22.x
+- Node.js ^18.x.x
+- Yarn ^1.22.x
 - mui/material: 5.16.7
 - axios: ^1.7.7
 - echarts: ^5.5.1
@@ -44,8 +46,8 @@ https://stamm2911.github.io/smart-visualizer/
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/pharus-frontend-assignment.git
-   cd pharus-frontend-assignment
+   git clone https://github.com/your-username/smart-visualizer.git
+   cd smart-visualizer
    ```
 
 2. **Install dependencies:**
@@ -80,7 +82,7 @@ https://stamm2911.github.io/smart-visualizer/
 
 ## Assignment Overview
 
-This take-home assignment consists of two main tasks: building a chat interface and a double vertical bar chart for data visualization, using the following stack:
+This project consists of two main tasks: building a chat interface and a double vertical bar chart for data visualization, using the following stack:
 
 - **React.js**
 - **MUI (Material-UI)**
@@ -91,9 +93,9 @@ This take-home assignment consists of two main tasks: building a chat interface 
 
 ### Design:
 
-Please follow the design provided in the [Figma](https://www.figma.com/design/YVjXH0HdWwnBlXv9mPw9zr/Pharus---Front-End-take-home-assignment?node-id=0-1&node-type=canvas&t=jLJMey0jOisCweC9-0) and ensure the UI is responsive. The smallest screen size should be a landscape iPad.
+[Figma](https://www.figma.com/design/YVjXH0HdWwnBlXv9mPw9zr/Pharus---Front-End-take-home-assignment?node-id=0-1&node-type=canvas&t=jLJMey0jOisCweC9-0)
 
-## Task 1: Chat Interface
+## Part 1: Chat Interface
 
 ### Location:
 
@@ -113,7 +115,7 @@ The chat interface should be located on the right side of the view.
 
 - The buttons on top of the chat interface are decorative, except the “X” button which collapses the chat.
 
-## Task 2: Double Vertical Bar Chart
+## Part 2: Double Vertical Bar Chart
 
 ### Data Source:
 
@@ -137,8 +139,6 @@ The data should be fetched from an API.
 
 - **State Management:**  
   Use React Hooks for managing states effectively across the application.
-
-We’re excited to see your work!
 
 ---
 
